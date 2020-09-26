@@ -2,6 +2,7 @@
     align-items: center;
     padding: 10px;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 .sidebar-row h4 {
     margin-left: 20px;
