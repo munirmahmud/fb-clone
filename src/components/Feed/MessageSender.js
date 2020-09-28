@@ -4,8 +4,10 @@ import {Avatar} from "@material-ui/core";
 import VideocamIcon from '@material-ui/icons/Videocam';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import {useStateValue} from "../../Api/StateProvider";
 
 const MessageSender = () => {
+    const [{user}, dispatch] = useStateValue();
     const [input, setInput] = useState('');
     const [imageUrl, setImageUrl] = useState('');
 
@@ -19,9 +21,9 @@ const MessageSender = () => {
     return (
         <div className="message-sender d-flex">
             <div className="message-sender-top d-flex">
-                <Avatar />
+                <Avatar src={user.photoURL} />
                 <form className={"d-flex"}>
-                    <input value={input} onChange={e => setInput(e.target.value)} className={"message-sender-input"} type="text" placeholder={"What's on your mind?"} />
+                    <input value={input} onChange={e => setInput(e.target.value)} className={"message-sender-input"} type="text" placeholder={`What's on your mind? ${user.displayName}`} />
                     <input value={imageUrl} onChange={e => setImageUrl(e.target.value)} type="text" placeholder={"Image URL (Optional)"} />
                     <button type={"Submit"} onClick={handleSubmit} hidden>
                         Hidden Submit

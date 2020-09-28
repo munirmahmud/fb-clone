@@ -11,11 +11,13 @@ import ChatIcon from '@material-ui/icons/Chat';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined';
+import {useStateValue} from "../../Api/StateProvider";
 
 const Sidebar = () => {
+    const [{user}, dispatch] = useStateValue();
     return (
         <aside className="sidebar">
-            <SidebarRow src={"https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Katherine_Maher.jpg/220px-Katherine_Maher.jpg"} title={"Munir Mahmud"} />
+            <SidebarRow src={user.photoURL} title={user.displayName} />
             <SidebarRow Icon={LocalHospitalIcon} title={"Covid-19 Information Center"} />
             <SidebarRow Icon={EmojiFlagsIcon} title={"Page"} />
             <SidebarRow Icon={PeopleIcon} title={"Friends"} />
